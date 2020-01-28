@@ -1,0 +1,17 @@
+<Caja1>:
+    orientation: "vertical"
+    Label:
+        text: "Welcom to Heds or Tails"
+        font_size: 10
+    BoxLayout:
+        orientation: "horizontal"
+        Button:
+            text:"Teads"
+            on_release: root.choice("heads")
+        Button:
+            text:"Tails"
+            on_release: root.choice("tails")
+    Label:
+        id: result
+        text: ""
+        font_size: 40
