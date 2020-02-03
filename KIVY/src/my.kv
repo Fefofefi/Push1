@@ -1,7 +1,7 @@
 <Caja1>
 
-    name: name
-    email: email
+    cartas: cartas
+    objetivo: objetivo
 
     GridLayout:
         cols:1
@@ -12,19 +12,19 @@
             cols:2
 
             Label:
-                text: "Name: "
+                text: "Con cuantas cartas?: "
 
             TextInput:
-                id: name
+                id: cartas
                 multiline: False
 
             Label:
-                text : "Email: "
+                text : "A cuanto se juega?: "
 
             TextInput:
-                id: email
+                id: objetivo
                 multiline: False
         Button:
             on_press: root.btn()
-            text: "Enviar"
+            text: "Siguiente>>"
 
