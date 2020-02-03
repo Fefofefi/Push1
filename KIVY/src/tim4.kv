@@ -1,8 +1,11 @@
 WindowManager:
     MainWindow:
     SecondWindow:
+    ThirdWindow:
+    FourWindow:
 
 <MainWindow>:
+
     name: "main"
     cartas : cartas
     objetivo : objetivo
@@ -17,22 +20,122 @@ WindowManager:
             TextInput:
                 id: cartas
                 multiline: False
+                input_type: "number"
+                input_filter: "int"
             Label:
                 text:"Objetivo: "
             TextInput:
                 id: objetivo
                 multiline: False
+                input_type: "number"
+                input_filter: "int"
         Button:
             text: "Siguiente>>"
-            on_press: root.btn()
             on_release:
                 app.root.current= "second"
+                root.manager.screens[1].ids.carta.text = "Se juega con " + root.ids.cartas.text + " cartas"
+                root.manager.screens[1].ids.objetivo.text = "Se juega a " + root.ids.objetivo.text
+                root.manager.screens[3].ids.iduno.text = "Se juega con " + root.ids.cartas.text + " cartas"
+                root.manager.screens[3].ids.iddos.text = "Se juega a " + root.ids.objetivo.text
+                root.btn()
                 root.manager.transition.direction="left"
 <SecondWindow>:
     name: "second"
+    carta: carta
+    objetivo: objetivo
 
-    Button:
-        text: "Go Back"
-        on_release:
-            app.root.current= "main"
-            root.manager.transition.direction="right"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        pos: 0, 0
+
+        Label:
+            id: carta
+            text: ""
+        Label:
+            id: objetivo
+            text: ""
+
+        GridLayout:
+            cols:2
+
+            Button:
+                text: "Ir Atrás"
+                on_release:
+                    app.root.current= "main"
+                    root.manager.transition.direction="right"
+
+            Button:
+                text: "Elegir Jugadores"
+                on_release:
+                    app.root.current= "third"
+                    root.manager.transition.direction="left"
+
+<ThirdWindow>
+    name: "third"
+    njugador: njugador
+    jugador: jugador
+    empezar: empezar
+
+    GridLayout:
+        cols: 2
+        orientation: "horizontal"
+
+
+        GridLayout:
+            cols:1
+            TextInput:
+                id: njugador
+                text: "quien juega"
+                multiline: False
+            GridLayout:
+                cols:3
+
+                Button:
+                    text: "Agregar Jugador"
+                    on_press: root.btn3()
+                Button:
+                    text:"Borrar Último"
+                    on_press: root.btn5()
+                Button:
+                    text:"Limpiar todo"
+                    on_press: root.btn4()
+
+            GridLayout:
+                cols:1
+                orientation: "vertical"
+
+                Label:
+                    id : jugador
+                    text: ""
+                Button:
+                    id: empezar
+                    text:"Empezar Juego"
+                    on_release:
+                        app.root.current= "four"
+                        root.manager.transition.direction="left"
+
+<FourWindow>
+    name: "four"
+    iduno: iduno
+    iddos: iddos
+    idtres: idtres
+
+    GridLayout:
+        orientation:"horizontal"
+        rows: 3
+
+        Label:
+            id: iduno
+            text:""
+        Label:
+            id: iddos
+            text:""
+        Label:
+            id: idtres
+            text:"manos"
+
+
+
+

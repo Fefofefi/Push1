@@ -11,6 +11,14 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
+from kivy.core.window import Window
+
+Window.size = (300, 1280)
+
+Jugadores = []
+CantidadDeCartas = 0
+Objetivo = 0
+Manos = 0
 
 class MainWindow(Screen):
 
@@ -18,14 +26,41 @@ class MainWindow(Screen):
     objetivo = ObjectProperty(None)
 
     def btn(self):
-        print("Se juega con", self.cartas.text, "cartas", "y se juega hasta", self.objetivo.text)
-        cartas = self.cartas.text
-        objetivo = self.objetivo.text
+        CantidadDeCartas = int(self.cartas.text)
+        Objetivo = int(self.objetivo.text)
         self.cartas.text = ""
         self.objetivo.text = ""
-        print(cartas, objetivo)
 
 class SecondWindow(Screen):
+
+    cartas = ObjectProperty(None)
+    objetivo = ObjectProperty(None)
+
+class ThirdWindow(Screen):
+
+    def btn3(self):
+        Nombre = self.njugador.text
+        Jugadores.append(Nombre)
+        self.njugador.text = ""
+        self.jugador.text = str(Jugadores)
+        print(Jugadores)
+
+    def btn4(self):
+        self.njugador.text = ""
+        Jugadores.clear()
+        self.jugador.text = ""
+
+    def btn5(self):
+        Jugadores.reverse()
+        if len(Jugadores) != 0:
+            largo = Jugadores.count(self)
+            Jugadores.pop(largo)
+            Jugadores.reverse()
+            print(Jugadores)
+            self.jugador.text = str(Jugadores)
+        else:
+            self.jugador.text = ""
+class FourWindow(Screen):
     pass
 class WindowManager(ScreenManager):
     pass

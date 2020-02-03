@@ -11,10 +11,10 @@ class Contenedor_01 (BoxLayout):
         self.ids.result.text=output
 
 
-class MainApp(App):
+class MaineApp(App):
     title = "Falsito truco"
     def build(self):
         return Contenedor_01()
 
 if __name__ == '__main__':
-    MainApp().run()
+    MaineApp().run()

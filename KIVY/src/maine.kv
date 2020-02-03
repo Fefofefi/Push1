@@ -1,8 +1,12 @@
-<Caja1>:
+<ItemLabel@Label>:
+    font_size: "25sp"
+
+<Contenedor_01>:
+
     orientation: "vertical"
-    Label:
-        text: "Welcom to Heds or Tails"
-        font_size: 10
+    ItemLabel:
+        text: "Welcome to Heds or Tails"
+
     BoxLayout:
         orientation: "horizontal"
         Button:
@@ -11,6 +15,8 @@
         Button:
             text:"Tails"
             on_release: root.choice("tails")
+        Label:
+            text:"Hola"
     Label:
         id: result
         text: ""

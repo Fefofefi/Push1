@@ -7,6 +7,9 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.checkbox import CheckBox
+
+Jugadores = ["ede","sss","eee","www","qewwq","ede","ede","ede",]
 
 class Caja1 (GridLayout):
     def __init__(self,**kwargs):
@@ -16,10 +19,10 @@ class Caja1 (GridLayout):
 
         self.inside = GridLayout()
         self.inside.cols = 2
-
-        self.inside.add_widget(Label(text="Name: "))
-        self.name = TextInput(multiline=False)
-        self.inside.add_widget(self.name)
+        for i in Jugadores:
+            self.inside.add_widget(Label(text=i))
+            self.name = CheckBox()
+            self.inside.add_widget(self.name)
 
         self.inside.add_widget(Label(text="Last Name: "))
         self.lastName = TextInput(multiline=False)
