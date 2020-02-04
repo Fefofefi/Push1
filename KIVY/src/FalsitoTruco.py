@@ -11,22 +11,26 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
-class Uno(Widget):
-    cartas = ObjectProperty(None)
-    objetivo = ObjectProperty(None)
+Jugadores = []
 
-    def btn(self):
-        print("Se juega con", self.cartas.text,"cartas", "y se juega hasta", self.objetivo.text)
-        self.cartas.text = ""
-        self.objetivo.text = ""
+class Uno(Screen):
 
+    def agregar(self):
+        Jugadores.append(self.ids.nombre.text)
+        print(Jugadores)
+        self.ids.nombre.text = ""
+        self.ids.borrar.disabled = False
+        self.ids.reiniciar.disabled = False
+        self.ids.empezar.disabled = False
+        self.ids.juga.text = str(Jugadores)
 
+class Manager(ScreenManager):
+    pass
 
-
-class MyApp(App):
+class FalsoApp(App):
     title = "Falsito truco"
     def build(self):
         return Uno()
 
 if __name__ == "__main__":
-    MyApp().run()
+    FalsoApp().run()

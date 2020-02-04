@@ -1,0 +1,62 @@
+Manager:
+    Uno:
+
+<Uno>
+    name:"one"
+    juga:juga
+    nombre:nombre
+    reiniciar:reiniciar
+    borrar:borrar
+    empezar:empezar
+
+    BoxLayout:
+        orientation:"vertical"
+        GridLayout:
+            size_hint_x: 1
+            size_hint_y:.1
+            cols: 3
+            orientation:"horizontal"
+            TextInput:
+                hint_text:"Q de Cartas"
+            TextInput:
+                hint_text:"Objetivo"
+            TextInput:
+                id: nombre
+                hint_text:"Agregar Jugador"
+                multiline:False
+        GridLayout:
+            size_hint_x: 1
+            size_hint_y:.1
+            cols: 3
+            orientation:"horizontal"
+            Button:
+                text:"Agregar"
+                on_press: root.agregar()
+            Button:
+                id: borrar
+                text:"Borrar"
+                disabled: True
+            Button:
+                id: reiniciar
+                text:"Reiniciar"
+                disabled: True
+        GridLayout:
+            size_hint_x: 1
+            size_hint_y:.1
+            cols: 3
+            orientation:"horizontal"
+            Label:
+                text:""
+            Button:
+                id: empezar
+                text:"Empezar"
+                disabled: True
+            Label:
+                text:""
+        GridLayout:
+            cols: 3
+            orientation:"vertical"
+            Label:
+                id: juga
+                text:""
+

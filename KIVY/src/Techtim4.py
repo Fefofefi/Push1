@@ -12,6 +12,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 from kivy.core.window import Window
+from kivy.uix.checkbox import CheckBox
 
 Window.size = (300, 1280)
 
@@ -60,8 +61,13 @@ class ThirdWindow(Screen):
             self.jugador.text = str(Jugadores)
         else:
             self.jugador.text = ""
+
 class FourWindow(Screen):
-    pass
+    def __init__(self, **kwargs):
+        super(FourWindow, self).__init__(**kwargs)
+        for i in Jugadores:
+            self.add_widget(Label(text=i))
+
 class WindowManager(ScreenManager):
     pass
 
