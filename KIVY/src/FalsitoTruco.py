@@ -12,6 +12,8 @@ from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 Jugadores = []
+QCartas = 0
+Objetivo = 0
 
 class Uno(Screen):
 
@@ -23,6 +25,16 @@ class Uno(Screen):
         self.ids.reiniciar.disabled = False
         self.ids.empezar.disabled = False
         self.ids.juga.text = str(Jugadores)
+        QCartas = self.ids.qcartas.text
+        Objetivo = self.ids.objetivo.text
+        self.ids.qcartas.disabled = True
+        self.ids.objetivo.disabled = True
+
+# Resolver error con el boton de borrar.
+
+    def borrar(self):
+        print(Jugadores)
+
 
 class Manager(ScreenManager):
     pass

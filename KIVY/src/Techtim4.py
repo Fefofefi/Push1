@@ -63,10 +63,9 @@ class ThirdWindow(Screen):
             self.jugador.text = ""
 
 class FourWindow(Screen):
-    def __init__(self, **kwargs):
-        super(FourWindow, self).__init__(**kwargs)
-        for i in Jugadores:
-            self.add_widget(Label(text=i))
+
+    players = ObjectProperty(Jugadores)
+
 
 class WindowManager(ScreenManager):
     pass

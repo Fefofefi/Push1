@@ -8,6 +8,8 @@ Manager:
     reiniciar:reiniciar
     borrar:borrar
     empezar:empezar
+    qcartas:qcartas
+    objetivo:objetivo
 
     BoxLayout:
         orientation:"vertical"
@@ -17,8 +19,10 @@ Manager:
             cols: 3
             orientation:"horizontal"
             TextInput:
+                id: qcartas
                 hint_text:"Q de Cartas"
             TextInput:
+                id: objetivo
                 hint_text:"Objetivo"
             TextInput:
                 id: nombre
@@ -35,6 +39,7 @@ Manager:
             Button:
                 id: borrar
                 text:"Borrar"
+                on_release: root.borrar()
                 disabled: True
             Button:
                 id: reiniciar

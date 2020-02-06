@@ -116,6 +116,7 @@ WindowManager:
                         app.root.current= "four"
                         root.manager.transition.direction="left"
 
+#: import Label kivy.uix.label.Label
 <FourWindow>:
 
     name: "four"
@@ -123,10 +124,13 @@ WindowManager:
     iddos: iddos
     idtres: idtres
 
+    on_enter: for p in self.players: l=Label(text=p); grid.add_widget(l);
 
-    GridLayout:
+    BoxLayout:
         orientation:"horizontal"
-        rows: 3
+        cols: 3
+        size_hint_x: 1
+        size_hint_y: 0
 
         Label:
             id: iduno
@@ -137,6 +141,12 @@ WindowManager:
         Label:
             id: idtres
             text:"manos"
+        GridLayout:
+            orientation:"horizontal"
+            id: grid
+            cols: 4
+
+
 
 
 
