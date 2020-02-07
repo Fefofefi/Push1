@@ -9,6 +9,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
+from kivy.uix.dropdown import DropDown
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 Jugadores = []
@@ -17,10 +18,51 @@ Objetivo = 0
 
 class Uno(Screen):
 
+    def empezar(self):
+
+        self.ids.juga.text= ""
+        for i in Jugadores:
+            a = Label(text=i)
+            self.ids.grid.add_widget(a)
+        self.ids.nombre.text = ""
+        self.ids.borrar.disabled = True
+        self.ids.reiniciar.disabled = False
+        self.ids.empezar.disabled = True
+        self.ids.qcartas.disabled = True
+        self.ids.objetivo.disabled = True
+        self.ids.agregar.disabled = True
+
+    def reiniciar(self):
+        Jugadores.clear()
+        QCartas = 0
+        Objetivo = 0
+        self.ids.qcartas.text = ""
+        self.ids.objetivo.text = ""
+        self.ids.juga.text = ""
+        self.ids.nombre.text = ""
+        self.ids.agregar.disabled = False
+        self.ids.borrar.disabled = True
+        self.ids.reiniciar.disabled = True
+        self.ids.empezar.disabled = True
+        self.ids.qcartas.disabled = False
+        self.ids.objetivo.disabled = False
+        print(Jugadores)
+
+    def borrar(self):
+        Jugadores.reverse()
+        if len(Jugadores) != 0:
+            largo = Jugadores.count(self)
+            Jugadores.pop(largo)
+            Jugadores.reverse()
+            print(Jugadores)
+            self.ids.juga.text = str(Jugadores)
+        else:
+            self.ids.juga.text = ""
+
     def agregar(self):
         Jugadores.append(self.ids.nombre.text)
         print(Jugadores)
-        self.ids.nombre.text = ""
+        #self.ids.nombre.text = ""
         self.ids.borrar.disabled = False
         self.ids.reiniciar.disabled = False
         self.ids.empezar.disabled = False
@@ -29,12 +71,6 @@ class Uno(Screen):
         Objetivo = self.ids.objetivo.text
         self.ids.qcartas.disabled = True
         self.ids.objetivo.disabled = True
-
-# Resolver error con el boton de borrar.
-
-    def borrar(self):
-        print(Jugadores)
-
 
 class Manager(ScreenManager):
     pass

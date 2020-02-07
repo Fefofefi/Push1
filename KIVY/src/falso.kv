@@ -5,9 +5,6 @@ Manager:
     name:"one"
     juga:juga
     nombre:nombre
-    reiniciar:reiniciar
-    borrar:borrar
-    empezar:empezar
     qcartas:qcartas
     objetivo:objetivo
 
@@ -33,17 +30,20 @@ Manager:
             size_hint_y:.1
             cols: 3
             orientation:"horizontal"
+
             Button:
+                id: agregar
                 text:"Agregar"
                 on_press: root.agregar()
             Button:
                 id: borrar
                 text:"Borrar"
-                on_release: root.borrar()
+                on_press: root.borrar()
                 disabled: True
             Button:
                 id: reiniciar
                 text:"Reiniciar"
+                on_press: root.reiniciar()
                 disabled: True
         GridLayout:
             size_hint_x: 1
@@ -55,12 +55,13 @@ Manager:
             Button:
                 id: empezar
                 text:"Empezar"
+                on_press: root.empezar()
                 disabled: True
             Label:
                 text:""
-        GridLayout:
-            cols: 3
-            orientation:"vertical"
+        BoxLayout:
+            id:grid
+            orientation:"horizontal"
             Label:
                 id: juga
                 text:""
