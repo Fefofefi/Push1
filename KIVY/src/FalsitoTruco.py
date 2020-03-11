@@ -19,10 +19,9 @@ Objetivo = 0
 class Uno(Screen):
 
     def empezar(self):
-
-        self.ids.juga.text= ""
+        self.ids.grid.remove_widget(self.ids.juga)
         for i in Jugadores:
-            a = Label(text=i)
+            a = Label(text=i, id="prueba")
             self.ids.grid.add_widget(a)
         self.ids.nombre.text = ""
         self.ids.borrar.disabled = True
@@ -46,6 +45,8 @@ class Uno(Screen):
         self.ids.empezar.disabled = True
         self.ids.qcartas.disabled = False
         self.ids.objetivo.disabled = False
+        self.ids.grid.remove_widget(self.ids.juga)
+        self.ids.grid.remove_widget(self.ids.prueba)
         print(Jugadores)
 
     def borrar(self):
